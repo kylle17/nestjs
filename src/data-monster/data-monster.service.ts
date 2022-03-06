@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { DataMonsterRequestDto } from 'src/domain/data-monster.request.dto';
-
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { DataMonsterEntity } from './data-monster.entity';
@@ -13,7 +11,7 @@ export class DataMonsterService {
         private usersRepository: Repository<DataMonsterEntity>,
       ) {}
 
-    async createMonster(dataMonsterEntity:DataMonsterEntity): Promise<void> {        
+    async create(dataMonsterEntity:DataMonsterEntity): Promise<void> {        
         await this.usersRepository.save(dataMonsterEntity);
     }
 
@@ -25,10 +23,10 @@ export class DataMonsterService {
         return this.usersRepository.findOne(id);
     }
  
-    async update(){
-        // await this.usersRepository.update();
+    update( id:number , dataMonsterEntity:DataMonsterEntity){
+        this.usersRepository.update( id , dataMonsterEntity);
     }
-
+    
     async remove(id:number): Promise<void>{
         await this.usersRepository.delete(id);
     }
