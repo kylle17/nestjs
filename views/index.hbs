@@ -1,11 +1,25 @@
 <html>
   <head>
     <meta charset='utf-8' />
+    <script type="text/javascript" src="/js/common.js"></script>
     <title>App</title>
   </head>
   <body>
-    하염하염
+    
     {{message}}
+    
+    {{#each monsterList}}
+    <div>
+      <input type="hidden" value={{id}} />
+      <div>제목: {{title}}</div>
+      <div>언어:{{language}}</div>
+      <div>설명:{{explain}}</div>
+      코드:<textarea>{{source_code}}</textarea>
+      <br><br><br><br>
+    </div>
+
+    {{/each}}
+    
     {{>footer}}
   </body>
 </html>
